@@ -83,7 +83,7 @@ then
 fi
 mkdir -p ${BUILDDIR_32}
 pushd ${BUILDDIR_32} > /dev/null
-cmake -DCMAKE_TOOLCHAIN_FILE=${TOOLCHAIN_32} -DCMAKE_BUILD_TYPE=${BUILD_TYPE} $OLDPWD && make -j ${CORES} ${TARGETS_32}
+cmake -DCMAKE_CXX_FLAGS="-include cstdint" -DCMAKE_TOOLCHAIN_FILE=${TOOLCHAIN_32} -DCMAKE_BUILD_TYPE=${BUILD_TYPE} $OLDPWD && make -j ${CORES} ${TARGETS_32}
 popd > /dev/null
 
 # 64 bit
@@ -96,7 +96,7 @@ then
 fi
 mkdir -p ${BUILDDIR_64}
 pushd ${BUILDDIR_64} > /dev/null
-cmake -DCMAKE_TOOLCHAIN_FILE=${TOOLCHAIN_64} -DCMAKE_BUILD_TYPE=${BUILD_TYPE} $OLDPWD && make -j ${CORES} ${TARGETS_64}
+cmake -DCMAKE_CXX_FLAGS="-include cstdint" -DCMAKE_TOOLCHAIN_FILE=${TOOLCHAIN_64} -DCMAKE_BUILD_TYPE=${BUILD_TYPE} $OLDPWD && make -j ${CORES} ${TARGETS_64}
 popd > /dev/null
 
 echo ""
